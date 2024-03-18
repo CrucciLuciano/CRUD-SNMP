@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const apSchema = mongoose.model("Comodoro", new mongoose.Schema({
-    Node: { type: String, default: "Default" },
-    ip: { type: String, unique: true },
+    node: { type: String, default: "Default" },
+    ip: { type: String, default: "Default" },
     technology: { type: String, },
     availability: { type: Boolean, default: true },
     frequency: { type: Number, default: 0 },
@@ -13,3 +13,5 @@ const apSchema = mongoose.model("Comodoro", new mongoose.Schema({
 }), "Comodoro")
 
 export default apSchema
+
+

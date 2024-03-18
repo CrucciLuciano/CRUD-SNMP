@@ -9,7 +9,7 @@ export const __dirname = path.dirname(__filename);
 import snmp from "net-snmp"
 import { toBigIntBE } from "bigint-buffer"
 
-export function SNMP(OID, IP) {
+export function SNMP(OID, ip) {
     const options = {
         puerto: 161,
         reintentos: 5,
@@ -24,7 +24,7 @@ export function SNMP(OID, IP) {
     };
 
     // Crear e iniciar sesión con registro de errores
-    const session = crearYRegistrarError(IP, "Canopyro", options);
+    const session = crearYRegistrarError(ip, "Canopyro", options);
 
     // Definir un array vacío para almacenar datos
     let datos = [];
@@ -65,9 +65,9 @@ export function SNMP(OID, IP) {
     });
 }
 // Crear e iniciar sesión con registro de errores
-function crearYRegistrarError(IP, comunidad, options) {
+function crearYRegistrarError(ip, comunidad, options) {
     try {
-        return snmp.createSession(IP, comunidad, options);
+        return snmp.createSession(ip, comunidad, options);
     } catch (error) {
         console.error("Error al crear la sesión SNMP:", error);
         // Opcionalmente, manejar el registro o devolver un error aquí
@@ -106,3 +106,18 @@ mongoose.connect(url, { dbName: "Plazas" })
     .catch(e => {
         console.error("Error conectando a la DB")
     })
+
+
+///////Funcion para actualizar los APs//////
+
+const actualizarAutomaticamenteObjetoEnBaseDeDatos = () => {
+    setInterval(async () => {
+        try {
+            // Lógica para actualizar el objeto
+            await actualizarObjetoEnBaseDeDatos();
+            console.log('Objeto actualizado automáticamente');
+        } catch (error) {
+            console.error('Error al actualizar automáticamente el objeto:', error);
+        }
+    }, 60000); // Se ejecutará cada 60 segundos (60000 milisegundos)
+}

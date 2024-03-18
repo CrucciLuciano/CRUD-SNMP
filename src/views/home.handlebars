@@ -1,13 +1,30 @@
-{{#each resGet}}
-<ul>
-    <li>Nodo : {{this.Node}}</li>
-    <li>IP : {{this.ip}}</li>
-    <li>Technology : {{this.technology}}</li>
-    <li>Availability : {{this.availability}}</li>
-    <li>Frequency : {{this.frequency}}</li>
-    <li>Channel : {{this.channel}}</li>
-    <li>CountSM : {{this.countSM}}
-    <li>MB : {{this.MB}}</li>
-    <li>ServiceMax : {{this.serviceMax}}</li>
-</ul>
-{{/each}}
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Nodo</th>
+            <th>ip</th>
+            <th>Technology</th>
+            <th>Availability</th>
+            <th>Frequency</th>
+            <th>Channel</th>
+            <th>CountSM</th>
+            <th>MB</th>
+            <th>ServiceMax</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each resGet}}
+        <tr>
+            <td>{{this.Node}}</td>
+            <td>{{this.ip}}</td>
+            <td>{{this.technology}}</td>
+            <td>{{this.availability}}</td>
+            <td>{{this.frequency}}</td>
+            <td>{{this.channel}}</td>
+            <td>{{this.countSM}}</td>
+            <td>{{this.MB}}</td>
+            <td>{{this.serviceMax}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

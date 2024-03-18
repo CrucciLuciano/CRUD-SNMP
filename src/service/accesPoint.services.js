@@ -6,18 +6,21 @@ class AccessPointService {
         this.accessPointService = new AccessPointModel()
     }
 
-    upDateAP = async (data, IP) => {
-        return this.accessPointService.upDateAP(data, IP)
+    deleteAP = async (ip) => {
+        return this.accessPointService.deleteAP(ip)
+    }
+
+    upDateAP = async (data, ip) => {
+        return this.accessPointService.upDateAP(data, ip)
     }
 
     getAP = async () => {
         return this.accessPointService.getAP()
     }
 
-    createAP = async (data) => {
-        const OID = OIDs(data.technology)
-        const IP = data.ip
-        const dataSNMP = await SNMP(OID, IP)
+    createAP = async (node, ip, technology, serviceMax) => {
+        const OID = OIDs(technology)
+        const dataSNMP = await SNMP(OID, ip)
         const datos = {};
 
         for (const objeto of dataSNMP) {
@@ -44,8 +47,12 @@ class AccessPointService {
                 datos.MB = valor;
             }
         }
-        const combineData = { ...data, ...datos }
+        const combineData = { node, ip, technology, serviceMax, ...datos }
         return this.accessPointService.createAP(combineData)
+    }
+
+    updateAll = async () => {
+        return this.accessPointService.updateAll()
     }
 }
 

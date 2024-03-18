@@ -1,0 +1,21 @@
+.data-table {
+    border-collapse: collapse;
+    /* Remove default table spacing */
+    width: 100%;
+    /* Optional: Set a desired width */
+}
+
+.data-table thead th,
+.data-table tbody td {
+    border: 1px solid #ddd;
+    /* Add borders to cells */
+    padding: 5px;
+    /* Add padding for readability */
+}
+
+.data-table thead th {
+    text-align: left;
+    /* Align headers to the left */
+    background-color: #f2f2f2;
+    /* Optional: Set header background color */
+}
