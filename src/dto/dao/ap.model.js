@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const apSchema = mongoose.model("Comodoro", new mongoose.Schema({
     node: { type: String, default: "Default" },
-    ip: { type: String, default: "Default" },
+    ip: { type: String, default: "Default", unique: true },
     technology: { type: String, },
     availability: { type: Boolean, default: true },
     frequency: { type: Number, default: 0 },

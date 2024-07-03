@@ -1,4 +1,4 @@
-<form id="form-productos">
+<form id="form-createAP">
     <div>
         <label for="Node" id="prueba"> Nodo: </label>
         <br />
@@ -6,7 +6,7 @@
     </div>
 
     <div>
-        <label for="ip"> ip: </label>
+        <label for="ip"> IP: </label>
         <br />
         <input type="text" name="ip" id="ip" placeholder="Ingrese ip" />
     </div>
@@ -29,6 +29,17 @@
 
     <div>
         <input id="btnAddAP" type="submit" value="Crear AP" />
+    </div>
+</form>
+<br>
+<form id="form-eliminar">
+    <div>
+        <label for="ipEliminar"> IP: </label>
+        <br />
+        <input type="text" name="ipEliminar" id="ipEliminar" placeholder="Ingrese ip" />
+    </div>
+    <div>
+        <input id="btnEliAP" type="submit" value="Eliminar AP" />
     </div>
 </form>
 <script src="/js/formCreateAP.js"></script>

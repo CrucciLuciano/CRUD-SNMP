@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#form-productos").on("submit", function (event) {
+    $("#form-createAP").on("submit", function (event) {
         event.preventDefault(); // Evite el envío predeterminado del formulario
 
         // Recopile los datos del formulario
@@ -18,11 +18,31 @@ $(document).ready(function () {
             success: function (respuesta) {
                 // Maneje el envío exitoso (por ejemplo, muestre un mensaje de éxito)
                 console.log("Datos enviados con éxito:", respuesta);
+                $("#node").val("");
+                $("#ip").val("");
+                $("#serviceMax").val("");
             },
             error: function (error) {
-                // Maneje los errores (por ejemplo, muestre un mensaje de error)
                 console.error("Error al enviar datos:", error);
             }
         });
     });
+
+    $("#form-eliminar").on("submit", function (event) {
+        event.preventDefault();
+
+        var ipEliminar = $("#ipEliminar").val()
+        $.ajax({
+            url: `http://localhost:8080/netSNMP/${ipEliminar}`,
+            type: "DELETE",
+            dataType: "json",
+            success: function (respuesta) {
+                console.log("Datos enviados con éxito:", respuesta);
+                $("#ipEliminar").val("");
+            },
+            error: function (error) {
+                console.error("Error al enviar datos:", error);
+            }
+        });
+    })
 });

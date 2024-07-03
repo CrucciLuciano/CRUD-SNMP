@@ -15,7 +15,8 @@ class AccessPointService {
     }
 
     getAP = async () => {
-        return this.accessPointService.getAP()
+        const dataMongo = await this.accessPointService.getAP()
+        return dataMongo
     }
 
     createAP = async (node, ip, technology, serviceMax) => {

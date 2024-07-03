@@ -86,6 +86,7 @@ function obtenerValorConvertido(valor) {
         return valor;
     }
 }
+
 //////////////////OIDs segun Tecnologia///////////
 export function OIDs(tec) {
     if (tec == "ePMP") {
@@ -93,7 +94,6 @@ export function OIDs(tec) {
         return OID
     }
 }
-
 
 ///////////////////////Mongoose//////////////////
 import mongoose from "mongoose";
@@ -107,17 +107,8 @@ mongoose.connect(url, { dbName: "Plazas" })
         console.error("Error conectando a la DB")
     })
 
+///////bcrypt hasheo de password//////
+import bcrypt from "bcrypt"
 
-///////Funcion para actualizar los APs//////
-
-const actualizarAutomaticamenteObjetoEnBaseDeDatos = () => {
-    setInterval(async () => {
-        try {
-            // Lógica para actualizar el objeto
-            await actualizarObjetoEnBaseDeDatos();
-            console.log('Objeto actualizado automáticamente');
-        } catch (error) {
-            console.error('Error al actualizar automáticamente el objeto:', error);
-        }
-    }, 60000); // Se ejecutará cada 60 segundos (60000 milisegundos)
-}
+export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+export const isValidPassword = (user, password) => bcrypt.compareSync(password, user.password)

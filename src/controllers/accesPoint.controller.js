@@ -19,7 +19,10 @@ export const createAPost = async (req, res) => {
     try {
         const { node, ip, technology, serviceMax } = req.body;
         const data = await aPController.createAP(node, ip, technology, serviceMax)
-        return res.status(200)
+        return res.status(200).json({
+            status: "success",
+            msg: "AP Creado"
+        })
     } catch (e) {
         console.log(e);
         return res.status(500).json({
@@ -79,7 +82,7 @@ export const updateAll = async (req, res) => {
     try {
         return res.status(200).json({
             status: "success",
-            msg: "AP Borrado",
+            msg: "APs Actualizados",
             data: updateResult
         })
     } catch (e) {
